@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      border: 1px solid black;
+      margin: auto;
+      width: 500px;
+      height: 500px;
+    }
+
+    .box {
+      background-color: white;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div id="grid">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+
+    <script>
+      const boxes = document.querySelectorAll(".box");
+
+      function resetBoxColors() {
+        boxes.forEach((box) => {
+          box.classList.remove("red");
+          box.style.backgroundColor = "white";
+        });
+      }
+
+      function setBoxColors(box) {
+        if (box.style.backgroundColor == "red") {
+          alert("You cannot click an adjacent red box!");
+          return;
+        }
+        resetBoxColors();
+      }
+
+      boxes.forEach((box) => {
+        box.addEventListener("click", () => {
+          setBoxColors(box);
+          for (let i = 0; i < boxes.length; i++) {
+            let rows = i;
+            if (rows >= 0 && rows < 6) {
+              if (rows % 2 === 0) {
+                boxes[i].style.backgroundColor = "red";
+              }
+            }
+            if (rows >= 6 && rows < 12) {
+              if (rows % 2 === 0) {
+                boxes[i + 1].style.backgroundColor = "red";
+              }
+            }
+            if (rows >= 12 && rows < 18) {
+              if (rows % 2 === 0) {
+                boxes[i].style.backgroundColor = "red";
+              }
+            }
+            if (rows >= 18 && rows < 24) {
+              if (rows % 2 === 0) {
+                boxes[i + 1].style.backgroundColor = "red";
+              }
+            }
+            if (rows >= 24 && rows < 30) {
+              if (rows % 2 === 0) {
+                boxes[i].style.backgroundColor = "red";
+              }
+            }
+            if (rows >= 30 && rows < 36) {
+              if (rows % 2 === 0) {
+                boxes[i + 1].style.backgroundColor = "red";
+              }
+            }
+            if (boxes[i].style.backgroundColor === "white") {
+              boxes[i].innerHTML = "On click give alert!";
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
